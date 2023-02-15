@@ -59,18 +59,21 @@ while(True):
                 os.system(cmd1)
                 os.system(cmd2)
 
-                #SEND YOUR MAIL
-                sender_email = "Sender Mail" #Add sender mail here
-                receiver_email = "Receiver Mail" #Add receiver mail here
-                password = "Enter Password" #Add your password
-                message = "Hello World !!!" #Add your massage here
+                try: 
+                    #SEND YOUR MAIL
+                    sender_email = "Sender Mail" #Add sender mail here
+                    receiver_email = "Receiver Mail" #Add receiver mail here
+                    password = "Enter Password" #Add your password
+                    message = "Hello World !!!" #Add your massage here
 
-                server = smtplib.SMTP("smtp.office365.com", 587) # I add Example here please put correct SMTP server
-                server.starttls()
-                server.login(sender_email, password)
-                server.sendmail(sender_email, receiver_email, message)
-                server.quit()
-                break # Remove Break Statement to run after failer as well
-        
+                    server = smtplib.SMTP("smtp.office365.com", 587) # I add Example here please put correct SMTP server
+                    server.starttls()
+                    server.login(sender_email, password)
+                    server.sendmail(sender_email, receiver_email, message)
+                    server.quit()
+                    break # Remove Break Statement to run after failer as well
+                
+                except (ConnectionError, TypeError, NameError, SyntaxError ) as error:
+                        print(error)
 time.sleep(3)
 sock.close()
