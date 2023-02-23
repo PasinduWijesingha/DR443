@@ -36,21 +36,21 @@ while(True):
                 print ("Close Port")   
                 time.sleep(150)
                 # --------------------- After sussesful disaster this part will run -------------------------
-                # try : 
-                #     HarmonyController  = {
-                #             "device_type": 'a10',
-                #             "host": "172.21.10.156",
-                #             "username": "root",
-                #             "password": "P@ssw0rd@123",
-                #         }
+                try : 
+                    HarmonyController  = {
+                            "device_type": 'a10',
+                            "host": "172.21.10.156",
+                            "username": "root",
+                            "password": "P@ssw0rd@123",
+                        }
 
-                #     # net_connect = ConnectHandler(**HarmonyController )
-                #     # output = net_connect.send_command_timing("systemctl stop crond.service")
+                    net_connect = ConnectHandler(**HarmonyController )
+                    output = net_connect.send_command_timing("systemctl stop crond.service")
 
-                #     # print(output)
-                # except (ConnectionError, TypeError, NameError, SyntaxError ) as error:
-                #         #net_connect.exit()
-                #         print(error)
+                    print(output)
+                except (ConnectionError, TypeError, NameError, SyntaxError ) as error:
+                        #net_connect.exit()
+                        print(error)
                 
                 #COMMAND NEED TO RUN
                 cmd1 = './harmony_restore.sh --metrics=yes' # change the command as you want 
